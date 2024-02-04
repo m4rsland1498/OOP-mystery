@@ -58,5 +58,3 @@ while True:
     else:
         current = current.move(choice)
         current.describe()
-
-# test 2
