@@ -1,10 +1,12 @@
 directions = ["North", "East", "South", "West", "North east", "North west", "South east", 'South west']
 
 class Room:
+    instances = []
     def __init__(self, room_name):
         self.name = room_name
         self.description = None
         self.linked_rooms = {}
+        Room.instances.append(self)
 
     def get_name(self):
         return self.name
