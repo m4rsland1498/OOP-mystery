@@ -101,6 +101,7 @@ current = hallway
 current.describe()
 
 # Sheet window
+root = None
 def open_window():
     def create_window():
         root = tk.Tk()
@@ -131,7 +132,7 @@ def open_window():
 
         root.mainloop()
 
-    Thread(target = create_window).start()
+    Thread(target=create_window).start()
 
 
 open_window()
@@ -139,9 +140,7 @@ open_window()
 while True:
     choice = input("What do you do?").title()
     if choice == "Help":
-        print("\nTo move, enter compass directions as stated.\n'Sheet' to reopen.\n")
-    elif choice == "Sheet":
-        open_window()
+        print("\nTo move, enter compass directions as stated.")
     # above elif does not seem to work
     else:
         current = current.move(choice)
