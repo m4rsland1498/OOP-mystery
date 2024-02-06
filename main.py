@@ -76,13 +76,30 @@ cards.append(bertrum)
 cards.append(anastasia)
 
 answer_cards = []
-answer_cards.append(Weapon.instances[random.randint(0, len(Weapon.instances)-1)])
-answer_cards.append(Room.instances[random.randint(0, len(Room.instances)-1)])
-answer_cards.append(NPC.instances[random.randint(0, len(NPC.instances)-1)])
+answer_cards.append(Weapon.instances[random.randint(0, len(Weapon.instances) - 1)])
+answer_cards.append(Room.instances[random.randint(0, len(Room.instances) - 1)])
+answer_cards.append(NPC.instances[random.randint(0, len(NPC.instances) - 1)])
 for i in answer_cards:
     cards.remove(i)
 
 game_answers = Solution(answer_cards)
+
+NPCtempList = ["None", "None"]
+NPCtempList.extend(NPC.instances)
+print(NPCtempList)
+
+
+def setCharRooms(room, NPCtempList):
+    ch = random.choice(NPCtempList)
+    room.set_character(ch)
+    NPCtempList.remove(ch)
+
+
+setCharRooms(kitchen, NPCtempList)
+setCharRooms(l_room, NPCtempList)
+setCharRooms(hallway, NPCtempList)
+setCharRooms(bathroom, NPCtempList)
+setCharRooms(bedroom, NPCtempList)
 
 
 def deal_cards(player, cards):
@@ -102,13 +119,16 @@ current.describe()
 
 # Sheet window
 root = None
+
+
 def open_window():
     def create_window():
         root = tk.Tk()
         root.title("Grid of Textboxes")
 
         columns = ["Me", "Gherahyme", "Bertrum", "Anastasia"]
-        rows = ["Gherahyme", "Bertrum", "Anastasia", "Gun", "Knife", "Lead Pipe", "Candlestick", "Rope", "Spanner", "Axe",
+        rows = ["Gherahyme", "Bertrum", "Anastasia", "Gun", "Knife", "Lead Pipe", "Candlestick", "Rope", "Spanner",
+                "Axe",
                 "Hallway", "Kitchen", "Bedroom", "Bathroom", "Living Room"]
 
         for i, column in enumerate(columns, start=1):
@@ -138,10 +158,16 @@ def open_window():
 open_window()
 
 while True:
+    print("'Help' for list of instructions.\n")
     choice = input("What do you do?").title()
     if choice == "Help":
-        print("\nTo move, enter compass directions as stated.")
-    # above elif does not seem to work
+        print("\nTo move, enter compass directions as stated.\n'Talk' to speak to character in room.")
+    elif choice == "Talk":
+        if current.character == "None":
+            print("No one is here.\n")
+        else:
+            #talk
+            pass
     else:
         current = current.move(choice)
     current.describe()

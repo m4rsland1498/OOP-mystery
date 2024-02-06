@@ -6,6 +6,7 @@ class Room:
         self.name = room_name
         self.description = None
         self.linked_rooms = {}
+        self.character = None
         Room.instances.append(self)
 
     def get_name(self):
@@ -20,6 +21,10 @@ class Room:
     def describe(self):
         print("\n")
         print(self.get_description())
+        if self.character != "None":
+            print("\n", (self.character).name, "is here.")
+        else:
+            print("\nNo one is here.")
         print("\n")
         self.get_links()
 
@@ -41,3 +46,6 @@ class Room:
         else:
             print("Invalid input.\n")
             return self
+
+    def set_character(self, character):
+        self.character = character
