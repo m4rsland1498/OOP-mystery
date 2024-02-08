@@ -50,6 +50,9 @@ cards = []
 gherahyme = NPC("Gherahyme")
 bertrum = NPC("Bertrum")
 anastasia = NPC("Anastasia")
+gherahyme.set_opener("Oh well hello there my esteemed friend.")
+bertrum.set_opener("Umm... wha' d'ya want?")
+anastasia.set_opener("Hmm. I'm not the detective here but I know you murdered that outfit.")
 
 knife = Weapon("Knife")
 gun = Weapon("Gun")
@@ -86,7 +89,6 @@ game_answers = Solution(answer_cards)
 
 NPCtempList = ["None", "None"]
 NPCtempList.extend(NPC.instances)
-print(NPCtempList)
 
 
 def setCharRooms(room, NPCtempList):
@@ -158,16 +160,26 @@ def open_window():
 open_window()
 
 while True:
-    print("'Help' for list of instructions.\n")
+    print("--------------------------------------------")
+    print("Your clues:")
+    for i in cards:
+        print(i.get_name())
+    print("\n'Help' for list of instructions.\n")
     choice = input("What do you do?").title()
+    print("--------------------------------------------")
     if choice == "Help":
         print("\nTo move, enter compass directions as stated.\n'Talk' to speak to character in room.")
     elif choice == "Talk":
         if current.character == "None":
             print("No one is here.\n")
         else:
-            #talk
+            # Below for testing. Prints character's cards before guessing
+            #for i in current.character.cards:
+                #print(i.get_name())
+            current.character.talk()
             pass
     else:
         current = current.move(choice)
     current.describe()
+
+# to bring balance to the game, have a character at random that always lie

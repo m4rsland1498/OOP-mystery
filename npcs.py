@@ -1,4 +1,6 @@
 import random
+from rooms import Room
+from weapons import Weapon
 
 
 class NPC:
@@ -8,20 +10,64 @@ class NPC:
         self.name = npc_name
         self.description = None
         self.cards = None
+        self.opener = None
         NPC.instances.append(self)
 
     def get_name(self):
         return self.name
 
     def get_answers(self, card1, card2, card3):
-        if card1 in self.cards or card2 in self.cards or card3 in self.cards:
-            while True:
-                x = random.randint(0, 2)
-                if card1 == self.cards[x] or card2 == self.cards[x] or card3 == self.cards[x]:
-                    print(self.cards[x])
-                    break
+        x = 0
+        suggestions = [card1, card2, card3]
+        in_similar = []
+        for i in self.cards:
+            if i.get_name() in suggestions:
+                in_similar.append(i.get_name())
+        if len(in_similar) > 0:
+            print("\nI know it's not this one:", random.choice(suggestions))
+            print("--------------------------------------------")
         else:
             print("\nI don't know anything about that.\n")
 
     def set_cards(self, cards):
         self.cards = cards
+
+    def set_opener(self, opener):
+        self.opener = opener
+
+    def talk(self):
+        while True:
+            print("\n" + self.opener, "\nWhat is your suspect suggestion? (A person from your sheet)\n")
+            card1 = input().title()
+            x = 0
+            for i in NPC.instances:
+                if i.get_name() == card1:
+                    x = 1
+                    break
+            if x == 1:
+                break
+            print("Invalid choice.")
+        while True:
+            print("\nWhat is your room suggestion? (A room from your sheet)\n")
+            card2 = input().title()
+            x = 0
+            for i in Room.instances:
+                if i.get_name() == card2:
+                    x = 1
+                    break
+            if x == 1:
+                break
+            print("Invalid choice.")
+        while True:
+            print("\nWhat is your weapon suggestion? (A weapon from your sheet)\n")
+            card3 = input().title()
+            x = 0
+            for i in Weapon.instances:
+                if i.get_name() == card3:
+                    x = 1
+                    break
+            if x == 1:
+                break
+            print("Invalid choice.")
+
+        self.get_answers(card1, card2, card3)

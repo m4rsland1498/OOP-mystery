@@ -22,10 +22,9 @@ class Room:
         print("\n")
         print(self.get_description())
         if self.character != "None":
-            print("\n", (self.character).name, "is here.")
+            print("\n"+(self.character).name, "is here.\n")
         else:
-            print("\nNo one is here.")
-        print("\n")
+            print("\nNo one is here.\n")
         self.get_links()
 
     def set_links(self, direction, location):
@@ -35,7 +34,7 @@ class Room:
         for i in self.linked_rooms:
             room = self.linked_rooms[i]
             print("The", room.get_name(), "is to the", i)
-        print("\n\n")
+        print("\n")
 
     def move(self, direction):
         if direction in self.linked_rooms:
