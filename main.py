@@ -132,7 +132,7 @@ print("""
 print("Welcome to clOOPo!\nIn this thrilling game, you play the role of a detective, solving the murder of Estelle "
       "Montclaire.")
 print("You must talk to the residents of the Montclaire Mansion, clawing clues from each of them to uncover the "
-      "truth.\nBut watch out! Some people may be trying to cover up their own secrets and tell you lies.\nGood luck!")
+      "truth.\nBut watch out! Someone may be trying to cover up their own secrets and tell you lies.\nGood luck!")
 print("--------------------------------------------")
 
 # Starting Room
