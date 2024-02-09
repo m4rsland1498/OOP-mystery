@@ -11,23 +11,38 @@ class NPC:
         self.description = None
         self.cards = None
         self.opener = None
+        self.is_liar = False
         NPC.instances.append(self)
 
     def get_name(self):
         return self.name
 
     def get_answers(self, card1, card2, card3):
-        x = 0
         suggestions = [card1, card2, card3]
         in_similar = []
-        for i in self.cards:
-            if i.get_name() in suggestions:
-                in_similar.append(i.get_name())
-        if len(in_similar) > 0:
-            print("\nI know it's not this one:", random.choice(suggestions))
-            print("--------------------------------------------")
+        if not self.is_liar:
+            # Truth tellers' response
+            for i in self.cards:
+                if i.get_name() in suggestions:
+                    in_similar.append(i.get_name())
+            if len(in_similar) > 0:
+                print("\nI know it's not this one:", random.choice(in_similar))
+                print("--------------------------------------------")
+            else:
+                print("\nI don't know anything about that.\n")
+                print("--------------------------------------------")
         else:
-            print("\nI don't know anything about that.\n")
+            # Liar's response
+            in_similar.extend(suggestions)
+            for i in self.cards:
+                if i.get_name() in suggestions:
+                    in_similar.remove(i.get_name())
+            if len(in_similar) == 0:
+                print("\nI don't know anything about that.\n")
+                print("--------------------------------------------")
+            else:
+                print("\nI know it's not this one:", random.choice(in_similar))
+                print("--------------------------------------------")
 
     def set_cards(self, cards):
         self.cards = cards
@@ -71,3 +86,6 @@ class NPC:
             print("Invalid choice.")
 
         self.get_answers(card1, card2, card3)
+
+    def set_liar(self):
+        self.is_liar = True

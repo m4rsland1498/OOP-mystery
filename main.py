@@ -115,6 +115,26 @@ deal_cards(gherahyme, cards)
 deal_cards(bertrum, cards)
 deal_cards(anastasia, cards)
 
+(random.choice(NPC.instances)).set_liar()
+
+# Beginning
+print("""
+ ▄████████  ▄█        ▄██████▄   ▄██████▄     ▄███████▄  ▄██████▄  
+███    ███ ███       ███    ███ ███    ███   ███    ███ ███    ███ 
+███    █▀  ███       ███    ███ ███    ███   ███    ███ ███    ███ 
+███        ███       ███    ███ ███    ███   ███    ███ ███    ███ 
+███        ███       ███    ███ ███    ███ ▀█████████▀  ███    ███ 
+███    █▄  ███       ███    ███ ███    ███   ███        ███    ███ 
+███    ███ ███▌    ▄ ███    ███ ███    ███   ███        ███    ███ 
+████████▀  █████▄▄██  ▀██████▀   ▀██████▀   ▄████▀       ▀██████▀  
+           ▀                                                       
+""")
+print("Welcome to clOOPo!\nIn this thrilling game, you play the role of a detective, solving the murder of Estelle "
+      "Montclaire.")
+print("You must talk to the residents of the Montclaire Mansion, clawing clues from each of them to uncover the "
+      "truth.\nBut watch out! Some people may be trying to cover up their own secrets and tell you lies.\nGood luck!")
+print("--------------------------------------------")
+
 # Starting Room
 current = hallway
 current.describe()
@@ -168,7 +188,9 @@ while True:
     choice = input("What do you do?").title()
     print("--------------------------------------------")
     if choice == "Help":
-        print("\nTo move, enter compass directions as stated.\n'Talk' to speak to character in room.")
+        print("\nTo move, enter compass directions as stated.\n'Talk' to speak to character in room.\n'Accuse' to "
+              "make your final guesses and end the game.")
+        print("\n--------------------------------------------")
     elif choice == "Talk":
         if current.character == "None":
             print("No one is here.\n")
@@ -178,8 +200,11 @@ while True:
                 #print(i.get_name())
             current.character.talk()
             pass
+    elif choice == "Accuse":
+        # Below for testing. Prints game answers before guessing
+        #for i in game_answers.answers:
+            #print(i.get_name())
+        game_answers.accuse()
     else:
         current = current.move(choice)
     current.describe()
-
-# to bring balance to the game, have a character at random that always lie
