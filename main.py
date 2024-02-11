@@ -145,14 +145,37 @@ root = None
 
 def open_window():
     def create_window():
+
+        def on_text_widget_key(event):
+            if event.keysym == "BackSpace":
+                handle_backspace(event.widget)
+            else:
+                insert_text_with_colour(event.widget, event.char)
+            return "break"
+
+        def insert_text_with_colour(text_widget, char):
+            current_colour = colour_var.get()
+            text_widget.insert(tk.INSERT, char, current_colour)
+
+        def handle_backspace(text_widget):
+            text_widget.delete("insert-1c", tk.INSERT)
+
+        def setup_text_widget(text_widget):
+            for colour in colours:
+                text_widget.tag_configure(colour, foreground=colour)
+
         root = tk.Tk()
         root.title("Grid of Textboxes")
 
         columns = ["Me", "Gherahyme", "Bertrum", "Anastasia"]
         rows = ["Gherahyme", "Bertrum", "Anastasia", "Hallway", "Kitchen", "Bedroom", "Bathroom", "Living Room", "Gun",
-                "Knife", "Lead Pipe", "Candlestick", "Rope", "Spanner",
-                "Axe"
-                ]
+                "Knife", "Lead Pipe", "Candlestick", "Rope", "Spanner", "Axe"]
+
+        colours = ['Black', 'Red', 'Blue']
+        colour_var = tk.StringVar(root)
+        colour_var.set(colours[0])
+        colour_menu = tk.OptionMenu(root, colour_var, *colours)
+        colour_menu.grid(row=0, column=0, sticky="nsew")
 
         for i, column in enumerate(columns, start=1):
             label = tk.Label(root, text=column, borderwidth=2, relief="groove")
@@ -164,8 +187,10 @@ def open_window():
 
         for i in range(1, len(rows) + 1):
             for j in range(1, len(columns) + 1):
-                entry = tk.Entry(root)
-                entry.grid(row=i, column=j, sticky="nsew")
+                text_widget = tk.Text(root, height=1, width=20)
+                text_widget.grid(row=i, column=j, sticky="nsew")
+                setup_text_widget(text_widget)
+                text_widget.bind("<Key>", on_text_widget_key)
 
         for i in range(len(columns) + 1):
             root.grid_columnconfigure(i, weight=1)
