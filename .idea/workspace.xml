@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90be3ab7-e519-425a-816b-e65ea476d265" name="Changes" comment="game finished version 1 09/02/24 20:12" />
+    <list default="true" id="90be3ab7-e519-425a-816b-e65ea476d265" name="Changes" comment="game finished version 1 09/02/24 20:16">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution.py" beforeDir="false" afterPath="$PROJECT_DIR$/solution.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +40,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -151,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707509584214</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="game finished version 1 09/02/24 20:16">
+      <option name="closed" value="true" />
+      <created>1707509801396</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1707509801396</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -161,6 +176,7 @@
     <MESSAGE value="05/02/2024 18:16" />
     <MESSAGE value="08/02/2024 19:40" />
     <MESSAGE value="game finished version 1 09/02/24 20:12" />
-    <option name="LAST_COMMIT_MESSAGE" value="game finished version 1 09/02/24 20:12" />
+    <MESSAGE value="game finished version 1 09/02/24 20:16" />
+    <option name="LAST_COMMIT_MESSAGE" value="game finished version 1 09/02/24 20:16" />
   </component>
 </project>

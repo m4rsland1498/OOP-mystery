@@ -149,9 +149,10 @@ def open_window():
         root.title("Grid of Textboxes")
 
         columns = ["Me", "Gherahyme", "Bertrum", "Anastasia"]
-        rows = ["Gherahyme", "Bertrum", "Anastasia", "Gun", "Knife", "Lead Pipe", "Candlestick", "Rope", "Spanner",
-                "Axe",
-                "Hallway", "Kitchen", "Bedroom", "Bathroom", "Living Room"]
+        rows = ["Gherahyme", "Bertrum", "Anastasia", "Hallway", "Kitchen", "Bedroom", "Bathroom", "Living Room", "Gun",
+                "Knife", "Lead Pipe", "Candlestick", "Rope", "Spanner",
+                "Axe"
+                ]
 
         for i, column in enumerate(columns, start=1):
             label = tk.Label(root, text=column, borderwidth=2, relief="groove")
@@ -196,14 +197,14 @@ while True:
             print("No one is here.\n")
         else:
             # Below for testing. Prints character's cards before guessing
-            #for i in current.character.cards:
-                #print(i.get_name())
+            # for i in current.character.cards:
+            # print(i.get_name())
             current.character.talk()
             pass
     elif choice == "Accuse":
         # Below for testing. Prints game answers before guessing
-        #for i in game_answers.answers:
-            #print(i.get_name())
+        # for i in game_answers.answers:
+        # print(i.get_name())
         game_answers.accuse()
     else:
         current = current.move(choice)

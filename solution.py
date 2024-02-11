@@ -45,7 +45,7 @@ class Solution:
             print("Invalid choice.")
         check = ""
         while check != "y" and check != "n":
-            check = input("Are you sure you want to make an accusation? (y/n)")
+            check = input("Are you sure you want to make an accusation? (y/n)").lower()
         print("\n--------------------------------------------")
         if check == "y":
             self.accusation_check(card1, card2, card3)
